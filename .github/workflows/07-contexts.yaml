@@ -1,0 +1,28 @@
+name: 07 - Contexts
+run-name: 07 - Contexts | DEBUG - ${{ inputs.debug }}
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Enable debug mode'
+        type: boolean
+        default: false
+
+jobs:
+  echo-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Github Contexts
+        run: |
+          echo "GITHUB_CONTEXT: $GITHUB_CONTEXT"
+          echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
+          echo "GITHUB_REF: $GITHUB_REF"
+          echo "GITHUB_SHA: $GITHUB_SHA"
+          echo "GITHUB_ACTOR: $GITHUB_ACTOR"
+
+      - name: Retrieve Variable
+        run: |
+            echo "Variable from context: ${{ vars.MY_VAR }}"
+            
