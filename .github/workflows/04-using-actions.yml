@@ -6,6 +6,11 @@ jobs:
     steps:
       - name: "Checkout Code"
         uses: actions/checkout@v4
-      - name: "Printing Folders"
+        with:
+          node-version: "20.x"
+      - name: "Node Setup"
+        uses: actions/setup-node@v4
+      - name: "Install dependencies"
+        working-directory: my-app
         run: |
-          echo ls -l
+          npm ci
